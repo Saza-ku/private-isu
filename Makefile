@@ -1,20 +1,20 @@
 
 .PHONY: build
 build:
-	cd ~/webapp/go; \
-	go build -o isucondition main.go; \
-	sudo systemctl restart isucondition.go.service;
+	cd ~/private_isu/webapp/golang; \
+	go build -o app app.go; \
+	sudo systemctl restart isu-go;
 
 .PHONY: pprof
 pprof:
-	go tool pprof -http=0.0.0.0:8080 /home/isucon/webapp/go/isucondition http://localhost:6060/debug/pprof/profile
+	go tool pprof -http=0.0.0.0:8081 /home/isucon/webapp/go/isucondition http://localhost:6060/debug/pprof/profile
 
 
 MYSQL_HOST="127.0.0.1"
 MYSQL_PORT=3306
-MYSQL_USER=isucon
-MYSQL_DBNAME=isucondition
-MYSQL_PASS=isucon
+MYSQL_USER=isuconp
+MYSQL_DBNAME=isuconp
+MYSQL_PASS=isuconp
 
 MYSQL=mysql -h$(MYSQL_HOST) -P$(MYSQL_PORT) -u$(MYSQL_USER) -p$(MYSQL_PASS) $(MYSQL_DBNAME)
 SLOW_LOG=/tmp/slow-query.log
@@ -43,7 +43,7 @@ slow-detail:
 # alp
 
 ALPSORT=sum
-ALPM="/api/isu/.+/icon,/api/isu/.+/graph,/api/isu/.+/condition,/api/isu/[-a-z0-9]+,/api/condition/[-a-z0-9]+,/api/catalog/.+,/api/condition\?,/isu/........-....-.+,/\?jwt=[-a-z0-9]+"
+ALPM="/@.+,/posts/.+,/image/.+,/posts\?.+"
 OUTFORMAT=count,method,uri,min,max,sum,avg,p99
 .PHONY: alp
 alp:
