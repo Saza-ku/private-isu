@@ -11,4 +11,7 @@ require (
 	github.com/jmoiron/sqlx v1.3.5
 )
 
-require github.com/memcachier/mc v2.0.1+incompatible // indirect
+require (
+	github.com/gorilla/securecookie v1.1.1 // indirect
+	github.com/memcachier/mc v2.0.1+incompatible // indirect
+)

@@ -38,7 +38,7 @@ slow-show:
 	sudo mysqldumpslow -s t $(SLOW_LOG) | head -n 20
 .PHONY: slow-detail
 slow-detail:
-	sudo cat /tmp/slow-query.log | pt-query-digest --limit 8
+	sudo cat /tmp/slow-query.log | pt-query-digest --limit 5
 
 # alp
 
@@ -56,6 +56,6 @@ alpload:
 	sudo alp ltsv --load /tmp/alp.dump --sort $(ALPSORT) --reverse -o count,method,uri,min,max,sum,avg,p99 -q
 .PHONY: alpreset
 alp-reset:
-	sudo rm /var/log/nginx/access.log; \
-	sudo systemctl restart nginx.service;
+	-sudo rm /var/log/nginx/access.log
+	sudo systemctl restart nginx.service
 

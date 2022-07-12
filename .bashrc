@@ -1,8 +1,0 @@
-MYSQL_HOST="127.0.0.1"
-MYSQL_PORT=3306
-MYSQL_USER=isuconp
-MYSQL_DBNAME=isuconp
-MYSQL_PASS=isuconp
-
-MYSQL=mysql -h$(MYSQL_HOST) -P$(MYSQL_PORT) -u$(MYSQL_USER) -p$(MYSQL_PASS) $(MYSQL_DBNAME)
-SLOW_LOG=/tmp/slow-query.log
